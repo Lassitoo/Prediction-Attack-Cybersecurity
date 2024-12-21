@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+Prédiction en Temps Réel
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container mt-5 p-5 shadow-lg rounded bg-gradient animate__animated animate__fadeIn" 
+         style="background: linear-gradient(to bottom, #2c3e50, #3498db); color: #ffffff;">
+        
+        <div class="text-center mb-4">
+            <h1 class="display-4" 
+                style="background: linear-gradient(to right, #ff512f, #f09819); -webkit-background-clip: text; color: transparent; font-weight: bold;">
+                Prédiction en Temps Réel
+            </h1>
+        </div>
+
+        <div class="card shadow-sm p-4" style="background: rgba(255, 255, 255, 0.95); border-radius: 10px;">
+            <form method="POST" action="{% url 'predict_realtime' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="url" style="font-weight: bold; color: #34495e;">Entrez l'URL :</label>
+                    <input type="url" name="url" id="url" class="form-control" 
+                           placeholder="https://example.com" required 
+                           style="border-radius: 5px; padding: 10px; border: 1px solid #ddd; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+                </div>
+                <div class="text-center mt-4 d-flex justify-content-center align-items-center" style="gap: 20px;">
+                    <button type="submit" class="btn btn-primary" 
+                            style="background: linear-gradient(to right, #16a085, #f4d03f); border: none; padding: 10px 20px; font-size: 1.2em; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);">
+                        Prédire
+                    </button>
+                    <a href="{% url 'analyze_predictions' %}" class="btn btn-secondary" 
+                       style="background: linear-gradient(to right, #8e44ad, #3498db); border: none; padding: 10px 20px; font-size: 1.2em; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); text-decoration: none; color: #ffffff;">
+                        Analyse
+                    </a>
+                </div>
+            </form>
+
+            {% if error %}
+            <div class="alert alert-danger mt-5" 
+                 style="font-size: 1.1em; font-weight: bold; text-align: center;">
+                <strong>Erreur :</strong> {{ error }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<!-- Include Bootstrap CSS for styling -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Custom Styles -->
+<style>
+    .btn {
+        transition: all 0.3s ease-in-out;
+    }
+    .btn:hover {
+        transform: translateY(-3px);
+        opacity: 0.9;
+    }
+    .card {
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
+{% endblock %}

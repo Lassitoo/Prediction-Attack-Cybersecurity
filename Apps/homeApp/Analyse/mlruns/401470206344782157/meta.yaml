@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/yayab/Downloads/Analyse%20BI/Analyse_pov/Analyse_pov/Analyse_Pov_Albanie/Apps/homeApp/Analyse/mlruns/401470206344782157
+creation_time: 1715076043342
+experiment_id: '401470206344782157'
+last_update_time: 1715076043342
+lifecycle_stage: active
+name: /mlflow-tf-keras-mnist

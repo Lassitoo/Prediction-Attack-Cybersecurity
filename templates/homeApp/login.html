@@ -1,0 +1,114 @@
+{% extends "index.html" %}
+
+{% block style %}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 397px;
+  padding: 2% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 115%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 20px;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: 0;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 20px 35px;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: none;
+  outline: none;
+    position: relative;
+    margin-top: 35px;
+    border-bottom: 2px solid #d503ff;
+}
+.form button {
+   width: 100%;
+    height: 50px;
+    background: linear-gradient(#ff039e,#04d4eb);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 17px;
+    margin-top: 35px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+{#.form button:hover,.form button:active,.form button:focus {#}
+{#  background: #43A047;#}
+{#}#}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+section {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
+{#background:#43A047;#}
+  height: 100vh;
+  background: linear-gradient(#ff039e,#04d4eb);
+  max-height:10%;
+}
+h1{
+    text-align: center;
+    color: #d503ff;
+    margin-top: 35px;
+}
+
+    {% endblock %}
+
+{% block content %}
+<section>
+    <div class="login-page">
+
+        <div class="form">
+            <h1>S'identifier</h1>
+          <!-- <form class="register-form">
+            <input type="text" placeholder="name"/>
+            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="email address"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+          </form> -->
+          <form class="login-form" method="post">
+              {% csrf_token %}
+            <input type="text" name="username" placeholder="Nom d'utilisateur"/>
+            <input type="password"  name="password" placeholder="Mot de passe"/>
+            <button type="submit">Envoyer</button>
+          </form>
+          <br>
+          <p style="color: red;"> {{error}}</p>
+
+        </div>
+      </div>
+</section>
+{% endblock %}
+
+{%block js %}
+$('.message a').click(function(){
+    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+ });
+{% endblock %}

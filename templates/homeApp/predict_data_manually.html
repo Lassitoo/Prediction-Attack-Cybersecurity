@@ -1,0 +1,119 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+Home | Systeme de Detection d'Attaque
+{% endblock %}
+
+{% block css %}
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= Hero Section ======= -->
+    <section id="homesection" style="padding: 0;">
+        <!--__________________________________ header-box______________________________________________ -->
+        <div id="header-container">
+            <h1 id="header2">Resultat Manuel</h1>
+        </div>
+        <!-- ___________________________________main-division____________________________________________ -->
+        <div class="fraud-container" style="margin-bottom: 10px;">
+            <div class="fraud-header-container">
+                <h3 class="fraud-header">Prediction Manuelle par Saisie</h3>
+            </div>
+            <div class="result-table1">
+                <table>
+                    <h3>Algorithme Utilisé</h3>
+                    <tr>
+                        <th>Nom de l'algorithme</th>
+                        <th>Probabilité</th>
+                        <th>Resultat</th>
+                    </tr>
+                    <tr>
+                        <td>DNN Prediction </td>
+                        <td>{{ proba }}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="result-table1">
+                <table>
+                    <tr>
+                        <th>Attribut</th>
+                        <th>Valeurs</th>
+
+                    </tr>
+
+                    <!-- Ajoutez ici vos lignes de données -->
+
+                    {% for key, value in data.items %}
+                        <tr>
+                            <th>{{ key }}</th>
+                            <th>{{ value }}</th>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+</main>
+{% endblock %}
+
+{% block style %}
+<style>
+    /* Ajoutez ici vos styles CSS */
+     #header-container {
+        text-align: center;
+    }
+
+    .fraud-container {
+        margin-bottom: 10px;
+    }
+
+    .fraud-header-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .fraud-header {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .result-table1 {
+        margin-bottom: 30px;
+    }
+
+    .result-table1 table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .result-table1 table th,
+    .result-table1 table td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    .result-table1 table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .result-table1 table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .result-table1 table tr:hover {
+        background-color: #f1f1f1;
+    }
+    h3{
+        text-align: center;
+    }
+</style>
+{% endblock %}

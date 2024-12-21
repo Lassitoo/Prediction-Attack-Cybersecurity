@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% block title %}
+Analyse Graphique des Prédictions
+{% endblock %}
+
+{% block content %}  
+<main>
+    <div class="container mt-5 p-5 shadow-lg rounded bg-gradient animate__animated animate__fadeIn" 
+         style="background: linear-gradient(to bottom, #283048, #859398); color: #ffffff; box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);">
+        
+        <div class="text-center mb-5">
+            <h1 class="display-4" 
+                style="background: linear-gradient(to right, #ff512f, #f09819); -webkit-background-clip: text; color: transparent; font-weight: bold;">
+                Analyse Graphique des Prédictions
+            </h1>
+        </div>
+        
+        <div class="mb-5 text-center p-4 rounded shadow" 
+             style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff;">
+            <h3 style="font-weight: bold;">Statistiques des Prédictions</h3>
+            <p style="font-size: 1.2em;">Total des prédictions : <strong>{{ total_predictions }}</strong></p>
+            <p style="font-size: 1.2em;">Total des attaques détectées : <strong>{{ attack_count }}</strong></p>
+            <p style="font-size: 1.2em;">Total des statuts normaux : <strong>{{ normal_count }}</strong></p>
+        </div>
+        
+        <div class="text-center mb-5 p-4 shadow-lg rounded" 
+             style="background-color: rgba(255, 255, 255, 0.9); border-radius: 15px;">
+            <h3 style="font-weight: bold; color: #283048;">Graphique 1 : Distribution des Prédictions</h3>
+            <img src="data:image/png;base64,{{ image_base64_1 }}" 
+                 alt="Graphique Distribution des Prédictions" 
+                 style="width: 100%; max-width: 800px; border-radius: 15px; margin-top: 20px; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);" 
+                 class="animate__animated animate__fadeInUp">
+        </div>
+
+        <div class="text-center p-4 shadow-lg rounded" 
+             style="background-color: rgba(255, 255, 255, 0.9); border-radius: 15px;">
+            <h3 style="font-weight: bold; color: #283048;">Graphique 2 : Attaques par Types de Protocole</h3>
+            <img src="data:image/png;base64,{{ image_base64_2 }}" 
+                 alt="Graphique Attaques par Types de Protocole" 
+                 style="width: 100%; max-width: 800px; border-radius: 15px; margin-top: 20px; box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);" 
+                 class="animate__animated animate__fadeInUp">
+        </div>
+    </div>
+</main>
+
+<!-- Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+<!-- Custom CSS for shadows and animations -->
+<style>
+    .shadow-lg {
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    h1.display-4 {
+        text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    img:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+    }
+    .p-4 {
+        padding: 30px !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "index.html" %} {% load static %} {% block title %} Home | Systeme de Detection d'Attaque {% endblock %} {% block css %}
+
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+{% endblock %} {% block content %}
+<main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px">
+    <!--__________________________________ header-box______________________________________________ -->
+    <div id="header-container">
+      <h1 id="header2">DETECTION D'ATTAQUE</h1>
+    </div>
+    <!-- ___________________________________main-division____________________________________________ -->
+
+    <div class="fraud-container" style="margin-bottom: 25px">
+      <div class="fraud-header-container">
+        <h3 class="fraud-header">
+          CHOSIR LE TYPE DE FICHER CSV OU ENTREZ MANUELLE
+        </h3>
+      </div>
+      <div id="fraud-buttons-container">
+
+        <a href="{% url 'enter_form_data_manually' %}"
+          ><div class="fraud-buttons">SAISIE MANUELLE</div>
+        </a>
+        <a href="{% url 'add_files_multi' id%}">
+            <div class="fraud-buttons">CHARGER UN FICHIER CSV</div>
+        </a>
+          <a href="{% url 'predict_realtime'%}">
+            <div class="fraud-buttons">PREDICTION EN TEMPS REEL</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+</main>
+
+{% endblock %}

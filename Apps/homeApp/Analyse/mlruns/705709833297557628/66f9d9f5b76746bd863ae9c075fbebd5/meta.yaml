@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/yayab/Downloads/Analyse%20BI/Analyse_pov/Analyse_pov/Analyse_Pov_Albanie/Apps/homeApp/Analyse/mlruns/705709833297557628/66f9d9f5b76746bd863ae9c075fbebd5/artifacts
+end_time: 1715077770633
+entry_point_name: ''
+experiment_id: '705709833297557628'
+lifecycle_stage: active
+run_id: 66f9d9f5b76746bd863ae9c075fbebd5
+run_name: sedate-snake-74
+run_uuid: 66f9d9f5b76746bd863ae9c075fbebd5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715077754245
+status: 4
+tags: []
+user_id: yayab

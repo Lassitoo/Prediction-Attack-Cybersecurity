@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block css %}
+
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main id="main" >
+
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px;">
+   <!--__________________________________ header-box______________________________________________ -->
+<div id="header-container">
+  <h1 id="header2">TABLEAU DE BORD DE L'UTILISATEUR</h1>
+</div>
+<!-- ___________________________________main-division____________________________________________ -->
+<div id="main-container">
+  <div class="inner-box">
+    <svg viewBox="0 0 80 80" width="200px" height="200px">
+      <a href="{% url 'upload_credit_data' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Charger</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Un Fichier</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 80" width="200px" height="200px">
+      <a href="{% url 'reports' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Nos</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Rapport</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 80" width="200px" height="200px">
+      <a href="{% url 'account_details' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Mon</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Compte</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 80" width="200px" height="200px">
+      <a href="{% url 'change_password' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Changement</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Mot de passe</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 80" width="200px" height="200px">
+      <a href="">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="40" font-size="10px" fill="#FFFFFF" text-anchor="middle">Deconnexion</text></a>
+    </svg>
+  </div>
+  
+</div>
+  </section><!-- End Hero -->
+
+  </main>
+
+  
+{% endblock %}

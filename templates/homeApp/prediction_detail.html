@@ -1,0 +1,107 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+Détails de la Prédiction
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container mt-5 p-5 shadow-lg rounded bg-gradient animate__animated animate__fadeIn" 
+         style="background: linear-gradient(to bottom, #2c3e50, #4ca1af); color: #ffffff;">
+        
+        <div class="text-center mb-5">
+            <h1 class="display-4" 
+                style="background: linear-gradient(to right, #ff7e5f, #feb47b); -webkit-background-clip: text; color: transparent; font-weight: bold;">
+                Détails de la Prédiction
+            </h1>
+        </div>
+
+        <!-- Card Section -->
+        <div class="card shadow-sm animate__animated animate__zoomIn" 
+             style="background: linear-gradient(135deg, #283048 0%, #859398 100%); border-radius: 20px; border: none;">
+            <div class="card-body p-4 text-light">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <p style="font-size: 1.3em; margin-bottom: 0;"><strong>Date :</strong> {{ prediction.date|date:"Y-m-d H:i:s" }}</p>
+                        <p style="font-size: 1.3em; margin-bottom: 0;"><strong>URL :</strong> 
+                            <a href="{{ prediction.url }}" target="_blank" 
+                               class="text-warning font-weight-bold" 
+                               style="text-decoration: underline;">{{ prediction.url }}</a>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="badge {% if prediction.prediction_result == 'Attack' %}badge-danger{% else %}badge-success{% endif %} animate__animated animate__pulse" 
+                              style="font-size: 1.3em; padding: 10px;">
+                            {{ prediction.prediction_result }}
+                        </span>
+                    </div>
+                </div>
+                <p style="font-size: 1.3em; margin-top: 20px;"><strong>Recommandation :</strong> 
+                    <span style="font-style: italic;">{{ prediction.recommendation }}</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Extracted Features Table -->
+        <div class="mt-5">
+            <h3 class="text-light mb-4 animate__animated animate__slideInLeft" 
+                style="background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); padding: 15px; border-radius: 10px;">
+                Caractéristiques Extraites
+            </h3>
+            <div class="table-responsive animate__animated animate__slideInRight">
+                <table class="table table-bordered table-hover" style="background-color: #ffffff; border-radius: 10px;">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff; font-size: 1.2em;">Nom de la Caractéristique</th>
+                            <th style="background: linear-gradient(to right, #6a11cb, #2575fc); color: #ffffff; font-size: 1.2em;">Valeur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in prediction.extracted_features.items %}
+                        <tr class="animate__animated animate__fadeInUp" style="transition: all 0.3s ease;">
+                            <td style="font-weight: bold; font-size: 1.1em;">{{ key }}</td>
+                            <td style="font-size: 1.1em;">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<!-- Include Bootstrap CSS for styling -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Custom Styles -->
+<style>
+    .badge {
+        font-size: 1.2em;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .badge-danger {
+        background: linear-gradient(to right, #e53935, #e35d5b);
+    }
+    .badge-success {
+        background: linear-gradient(to right, #43a047, #66bb6a);
+    }
+    .card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    table thead th {
+        font-size: 1.2em;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+    }
+    table tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+</style>
+{% endblock %}

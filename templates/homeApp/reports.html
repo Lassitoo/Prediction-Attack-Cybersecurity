@@ -1,0 +1,54 @@
+{% extends "index.html" %} {% load static %} {% block title %} Home | Systeme de Detection d'Attaque {% endblock %} {% block css %}
+
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+{% endblock %} {% block content %}
+<main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px">
+    <!--__________________________________ header-box______________________________________________ -->
+    <div id="header-container">
+      <h1 id="header2">FICHIERS A TRAITER </h1>
+    </div>
+    <table
+      id="example"
+      class="table table-striped"
+      style="width: 90%; margin: 1% 4%">
+      <thead style="background-color: brown; text-align: center">
+        <tr>
+          <th>Sr. No</th>
+          <th>Nom du fichier</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        {% for i in all_files %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.file_name}}</td>
+          <td>{{i.description}}</td>
+          <td>
+            <a href="{% url 'view_data' i.id %}">
+                <button type="button" class="btn btn-primary">Visualiser le dataset</button>
+            </a>
+            <a href="{% url 'delete_data' i.id %}">
+                <button type="button" class="btn btn-secondary">Supprimer</button>
+            </a>
+            <a href="{% url 'prediction_button' i.id %}">
+                <button type="button" class="btn btn-success">Prediction</button>
+            </a>
+            <a href="{% url 'analysis' i.id %}">
+                <button type="button" class="btn btn-danger">Analyser</button>
+            </a>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  <!-- End Hero -->
+</main>
+
+{% endblock %}
